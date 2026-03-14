@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken")
 const User = require("../models/User")
 
-//helper: generate jwt
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: "7d",
@@ -108,7 +107,7 @@ exports.updateUserProfile = async (req, res) => {
         }
 
     } catch (error) {
-        console.log(error);   // always log errors while debugging
+        console.log(error);   
         res.status(500).json({ message: error.message });
     }
 };

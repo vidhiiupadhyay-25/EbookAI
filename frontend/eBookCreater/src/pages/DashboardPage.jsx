@@ -102,7 +102,6 @@ const DashboardPage = () => {
     }
   };
 
-  // 🔹 FIXED: redirect to editor after creation
   const handleBookCreated = (bookId) => {
     setIsCreateModalOpen(false);
     navigate(`/editor/${bookId}`);

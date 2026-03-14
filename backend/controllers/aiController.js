@@ -4,12 +4,6 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
-
-// ============================================
-// Generate Book Outline
-// POST /api/ai/generate-outline
-// Private
-// ============================================
 const generateOutline = async (req, res) => {
   try {
     const { topic, style, numChapters, description } = req.body;
@@ -66,7 +60,7 @@ Return only the JSON array.
       });
     }
 
-    // Extract JSON array safely
+    // Extract JSON array 
     const startIndex = text.indexOf("[");
     const endIndex = text.lastIndexOf("]");
 
@@ -91,12 +85,6 @@ Return only the JSON array.
   }
 };
 
-
-// ============================================
-// Generate Chapter Content
-// POST /api/ai/generate-chapter-content
-// Private
-// ============================================
 const generateChapterContent = async (req, res) => {
   try {
     const { chapterTitle, chapterDescription, style } = req.body;
@@ -132,7 +120,7 @@ Requirements:
       contents: prompt,
     });
 
-    const text = response.text;   // ✅ correct for @google/genai
+    const text = response.text;   //
 
     if (!text || text.trim() === "") {
       return res.status(500).json({

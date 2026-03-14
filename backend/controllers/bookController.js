@@ -84,7 +84,7 @@ const updateBook = async (req, res) => {
             { new: true }
         );
 
-        res.status(200).json(updatedBook);   // ✅ correct
+        res.status(200).json(updatedBook);   
 
     } catch (error) {
         console.log(error);
@@ -136,8 +136,6 @@ const updateBookCover = async (req, res) => {
         if (!req.file) {
             return res.status(400).json({ message: "No image file provided" })
         }
-
-        /*book.coverImage = `uploads/${req.file.filename}`*/
         book.coverImage = `/backend/uploads/${req.file.filename}`
 
 

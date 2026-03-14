@@ -17,7 +17,6 @@ const fs = require("fs");
 
 const md = new MarkdownIt();
 
-// typography configuration
 const DOCX_STYLES = {
     fonts: {
         body: "Charter",
@@ -57,8 +56,6 @@ const processMarkdownToDocx = (markdown) => {
         const token = tokens[i];
 
         try {
-
-            /* ---------------- HEADINGS ---------------- */
 
             if (token.type === "heading_open") {
 
@@ -106,7 +103,7 @@ const processMarkdownToDocx = (markdown) => {
                 }
             }
 
-            /* ---------------- PARAGRAPHS ---------------- */
+        
 
             else if (token.type === "paragraph_open") {
 
@@ -134,7 +131,6 @@ const processMarkdownToDocx = (markdown) => {
                 }
             }
 
-            /* ---------------- BULLET LIST ---------------- */
 
             else if (token.type === "bullet_list_open") {
                 inList = true;
@@ -153,7 +149,6 @@ const processMarkdownToDocx = (markdown) => {
                 );
             }
 
-            /* ---------------- ORDERED LIST ---------------- */
 
             else if (token.type === "ordered_list_open") {
                 inList = true;
@@ -174,7 +169,7 @@ const processMarkdownToDocx = (markdown) => {
                 );
             }
 
-            /* ---------------- LIST ITEMS ---------------- */
+            
 
             else if (token.type === "list_item_open") {
 
@@ -218,7 +213,7 @@ const processMarkdownToDocx = (markdown) => {
                 }
             }
 
-            /* ---------------- BLOCKQUOTE ---------------- */
+            
 
             else if (token.type === "blockquote_open") {
 
@@ -259,7 +254,7 @@ const processMarkdownToDocx = (markdown) => {
                 }
             }
 
-            /* ---------------- CODE BLOCK ---------------- */
+            
 
             else if (token.type === "code_block" || token.type === "fence") {
 
@@ -278,8 +273,7 @@ const processMarkdownToDocx = (markdown) => {
                 );
             }
 
-            /* ---------------- HORIZONTAL LINE ---------------- */
-
+            
             else if (token.type === "hr") {
 
                 paragraphs.push(
@@ -378,7 +372,7 @@ const exportAsDocument = async (req, res) => {
 
         const sections = [];
 
-        /* ---------------- COVER PAGE ---------------- */
+    
 
         if (book.coverImage && !book.coverImage.includes("pravatar")) {
 
@@ -420,7 +414,6 @@ const exportAsDocument = async (req, res) => {
             }
         }
 
-        /* ---------------- TITLE PAGE ---------------- */
 
         sections.push(
             new Paragraph({
@@ -488,7 +481,6 @@ const exportAsDocument = async (req, res) => {
             })
         );
 
-        /* ---------------- CHAPTERS ---------------- */
 
         (book.chapters || []).forEach((chapter, index) => {
 
@@ -530,8 +522,6 @@ const exportAsDocument = async (req, res) => {
             }
 
         });
-
-        /* ---------------- CREATE DOCUMENT ---------------- */
 
         const doc = new Document({
             sections: [
@@ -684,7 +674,7 @@ const renderMarkdown = (doc, markdown) => {
 
         try {
 
-            /* ---------- HEADINGS ---------- */
+            
             if (token.type === "heading_open") {
 
                 const level = parseInt(token.tag.substring(1), 10);
@@ -730,7 +720,7 @@ const renderMarkdown = (doc, markdown) => {
                 }
             }
 
-            /* ---------- PARAGRAPHS ---------- */
+            
             else if (token.type === "paragraph_open") {
 
                 doc
@@ -759,7 +749,7 @@ const renderMarkdown = (doc, markdown) => {
                 }
             }
 
-            /* ---------- BULLET LIST ---------- */
+            
             else if (token.type === "bullet_list_open") {
                 inList = true;
                 listType = "bullet";
@@ -774,7 +764,7 @@ const renderMarkdown = (doc, markdown) => {
                 );
             }
 
-            /* ---------- ORDERED LIST ---------- */
+            
             else if (token.type === "ordered_list_open") {
                 inList = true;
                 listType = "ordered";
@@ -791,7 +781,7 @@ const renderMarkdown = (doc, markdown) => {
                 );
             }
 
-            /* ---------- LIST ITEMS ---------- */
+            
             else if (token.type === "list_item_open") {
 
                 let bullet = "";
@@ -833,7 +823,7 @@ const renderMarkdown = (doc, markdown) => {
                 );
             }
 
-            /* ---------- CODE BLOCK ---------- */
+            
             else if (token.type === "code_block" || token.type === "fence") {
 
                 doc.moveDown(
@@ -858,7 +848,7 @@ const renderMarkdown = (doc, markdown) => {
                 );
             }
 
-            /* ---------- HORIZONTAL RULE ---------- */
+            
             else if (token.type === "hr") {
 
                 doc.moveDown();

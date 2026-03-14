@@ -15,7 +15,7 @@ const upload = require("../middlewares/uploadMiddleware");
 
 router.use(protect);
 
-// cover upload route FIRST
+
 router.put("/cover/:id", upload.single("coverImage"), updateBookCover);
 
 router.route("/")

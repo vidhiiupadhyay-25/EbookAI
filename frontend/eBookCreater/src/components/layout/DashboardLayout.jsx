@@ -9,7 +9,6 @@ const DashboardLayout = ({ children }) => {
 
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = () => {
       if (profileDropdownOpen) {

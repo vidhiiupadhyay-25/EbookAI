@@ -53,7 +53,6 @@ const ChapterEditorTab = ({
                 paragraph = paragraph.trim();
                 if (!paragraph) return '';
 
-                // Skip if already wrapped in HTML tags
                 if (paragraph.startsWith('<')) return paragraph;
 
                 return `<p class="mb-4 text-justify">${paragraph}</p>`;

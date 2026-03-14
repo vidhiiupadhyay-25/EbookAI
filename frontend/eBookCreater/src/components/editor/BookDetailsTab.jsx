@@ -12,11 +12,6 @@ const BookDetailsTab = ({
   fileInputRef,
 }) => {
 
-  /*const coverImageUrl = book.coverImage
-    ? book.coverImage.startsWith("http")
-      ? book.coverImage
-      : `${BASE_URL}${book.coverImage}`.replace(/\\/g, "/")
-    : null;*/
     const coverImageUrl = book.coverImage
   ? book.coverImage.startsWith("http")
     ? book.coverImage
