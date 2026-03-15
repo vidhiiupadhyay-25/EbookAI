@@ -8,6 +8,7 @@ An AI-powered web application that allows users to generate complete eBooks with
 - AI-generated chapter content
 - User authentication with JWT
 - Create, edit and manage books
+- Also option for Reading / Viewing eBook chapters
 - Drag-and-drop chapter reordering
 - Upload custom cover images
 - Export books as PDF or document
